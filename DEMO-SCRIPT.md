@@ -1,0 +1,58 @@
+# Demo Script: silent video with on-screen notes
+
+**Format:** silent screen recording (about 1 min 46 s (first scene starts at 0:03), 1920x1080, no audio). The notes are burned into the video as captions and also provided as `video/captions.srt`. Use this script as the voice-over notes if you present it live instead of playing the video.
+
+**Audience:** bank audit and compliance leads, DBAs, mainframe application owners.
+**Key takeaway:** an old Db2 backup can be located and proven with a complete evidence trail in minutes, and a backup that cannot be proven is reported as a finding, not discovered late.
+
+All figures are synthetic and illustrative. Product screens (IBM watsonx Assistant for Z, IBM ADDI for IBM Z) are simulated.
+
+## Setup checklist
+
+```bash
+npm ci
+npm run build
+npm run preview        # open http://localhost:4173 at 1920x1080
+```
+
+- Browser at 1920x1080, full screen, dark theme as built.
+- Or play `video/db2-backup-traceability-demo.webm` (any player; no sound).
+
+## Run of show (matches the video)
+
+| Step | Time | What you do | What you say | What the audience should see |
+|---|---|---|---|---|
+| 1. Scenario | 0:03 to 0:10 | Dashboard open | "A bank failed an audit: a three-year-old Db2 backup could not be traced." | 4 KPI cards: 222 image copies tracked |
+| 2. Dashboard | 0:10 to 0:18 | Point at the stacked bars | "The Db2 catalog keeps limited history. Teal months are only recoverable through ADDI lineage. Two red items are true gaps." | Blue (catalog), teal (ADDI), red (gap) bars |
+| 3. Problem | 0:20 to 0:34 | Go to Problem | "The search fell to developers, took days and left no repeatable evidence. The target is under 15 minutes with 100% auditable traceability, to be proven in a pilot." | Pain list, "Days / Developers / Ad hoc / Failed" cards |
+| 4. Solution, ask | 0:35 to 0:40 | Solution, general ledger preselected, press Run trace | "Nobody types. The analyst asks for the general ledger backup of 30 November 2023." | Preset scenarios, question in the chat |
+| 5. Solution, Assistant and ADDI | 0:40 to 0:51 | Let the trace run | "The assistant checks the catalog, finds no row and says why, then ADDI lineage identifies the COPY job and the dataset is located on virtual tape." | Chat messages, checks appearing with timestamps, clock running |
+| 6. Evidence | 0:52 to 1:00 | Scroll to evidence | "Integrity and a simulated recoverability dry run pass. The evidence package is sealed with every check, source system and timestamp. Under six simulated minutes." | Green "Validated" tag, evidence ID, 7 checks |
+| 7. Honest gap | 1:01 to 1:19 | Select Payment history, Run trace | "Not every question ends well. Here the job ran but its dataset is missing everywhere. The tool does not invent a backup; it documents the gap." | Red "Gap documented", skipped checks, "Honest outcome" notice |
+| 8. Results | 1:20 to 1:28 | Go to Results | "From days of developer effort to a repeatable, auditable trace by the audit or DBA team. These are illustrative targets, not measured results." | Before and after cards, chart |
+| 9. Architecture | 1:31 to 1:40 | Go to Architecture | "Conversation on top, ADDI lineage in the middle, Db2 and z/OS underneath, evidence at the end. No REST API and no watsonx.ai; both IBM products are simulated." | Mermaid diagram, component inventory with "Simulated" status |
+| 10. Close | 1:40 to 1:46 | Stay on Architecture | "Next step: a Client Engineering pilot connects this to your real ADDI project and Db2 subsystem in 3 to 4 weeks." | Closing caption |
+
+## Talk track
+
+Open with the audit failure: the backup probably existed, but nobody could prove where it was, and the proof depended on developers. Show that the catalog's limited history is the root cause (dashboard), then show the same question answered as a conversation with an evidence trail (solution). Spend time on the gap case: auditors trust a tool that reports what it cannot prove. Close on the pilot.
+
+## Q&A prep
+
+| Question | Answer |
+|---|---|
+| Is this real ADDI and Assistant for Z? | No. Both are simulated screens with scripted output. A pilot connects the real products. |
+| Is "under 15 minutes" measured? | No, it is the target. The simulated traces take about 3 to 5 minutes. A pilot measures it on the bank's data. |
+| Does ADDI recover backups? | Verify before presenting: the demo uses ADDI for discovery and lineage (which jobs and programs touch a Db2 object). Confirm exact capabilities with the ADDI product team. |
+| What if the dataset is truly gone? | The demo shows this: the gap is documented with evidence. Whether recovery is possible is a separate question. |
+| Does it need watsonx.ai or APIs? | Not in this demo. Both were out of scope. Verify before presenting what Assistant for Z needs in a real deployment. |
+
+## Fallback plan
+
+- Live app fails: play `video/db2-backup-traceability-demo.webm`.
+- Video will not play: open `screenshots/` (01 to 06) in order. They are generated by `npm run video`.
+- No network: everything runs locally with `npm run preview`.
+
+## Reset steps
+
+Reload the page. State is not persisted. On the Solution page, press Reset, or select another scenario.

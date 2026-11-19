@@ -1,0 +1,24 @@
+// Carbon g90 theme (dark). Setup order: theme tokens -> Carbon styles (+ IBM Plex via @carbon/react).
+// $font-path: Carbon's default '~@ibm/plex' is webpack syntax that Vite cannot resolve; a relative path lets Vite emit the woff2 files.
+// The configured @use must come first: a module cannot be configured with "with" once already loaded.
+@use '@carbon/react' with (
+  $font-path: '../node_modules/@ibm/plex'
+);
+@use '@carbon/react/scss/themes';
+@use '@carbon/react/scss/theme';
+
+:root {
+  @include theme.theme(themes.$g90);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: theme.$background;
+  color: theme.$text-primary;
+}

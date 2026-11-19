@@ -1,0 +1,139 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/theme';
+@use '@carbon/react/scss/type';
+
+.app-content {
+  padding: 0 0 $spacing-07;
+  min-height: calc(100vh - 3rem);
+}
+
+.demo-banner {
+  position: sticky;
+  top: 3rem;
+  z-index: 10;
+  .cds--inline-notification { max-inline-size: 100%; margin: 0; }
+}
+
+.page {
+  padding: $spacing-06 $spacing-06 0;
+  max-inline-size: 99rem;
+  margin: 0 auto;
+  h1 { @include type.type-style('heading-05'); margin-bottom: $spacing-02; }
+  .lead { color: theme.$text-secondary; margin-bottom: $spacing-06; max-inline-size: 60rem; }
+  h2 { @include type.type-style('heading-03'); margin: $spacing-07 0 $spacing-04; }
+}
+
+.mode-tag { display: inline-flex; align-items: center; margin-inline-end: $spacing-03; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-05;
+  margin-bottom: $spacing-06;
+}
+
+.kpi-card {
+  border-inline-start: 4px solid theme.$support-success;
+  &--warning { border-inline-start-color: theme.$support-warning; }
+  &--danger { border-inline-start-color: theme.$support-error; }
+  &__head { display: flex; justify-content: space-between; color: theme.$text-secondary; @include type.type-style('label-02'); }
+  &__value { @include type.type-style('productive-heading-06'); margin: $spacing-03 0; }
+  &__unit { @include type.type-style('body-compact-02'); color: theme.$text-secondary; }
+  &__note { @include type.type-style('helper-text-01'); color: theme.$text-secondary; }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: $spacing-05;
+}
+
+.chart-panel { min-block-size: 340px; }
+
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-block-size: 220px; color: theme.$text-secondary; text-align: center; gap: $spacing-03;
+}
+
+.row-selected td { background: theme.$layer-selected !important; }
+.muted { color: theme.$text-secondary; }
+
+// ---- Solution page
+.solution-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 3fr) minmax(380px, 4fr) minmax(380px, 4fr);
+  gap: $spacing-05;
+  align-items: start;
+}
+@media (max-width: 1312px) { .solution-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 880px) { .solution-grid { grid-template-columns: 1fr; } }
+
+.scenario-list { display: grid; gap: $spacing-03; margin-bottom: $spacing-05; }
+.scenario-btn {
+  text-align: start; width: 100%; border: 1px solid theme.$border-subtle; background: theme.$layer-01;
+  color: theme.$text-primary; padding: $spacing-04; cursor: pointer;
+  &:hover { background: theme.$layer-hover-01; }
+  &:focus-visible { outline: 2px solid theme.$focus; outline-offset: -2px; }
+  &[aria-pressed='true'] { border-color: theme.$border-interactive; box-shadow: inset 4px 0 0 theme.$border-interactive; }
+  strong { display: block; margin-bottom: $spacing-02; }
+  span { color: theme.$text-secondary; @include type.type-style('helper-text-01'); }
+}
+
+.clock {
+  display: flex; align-items: baseline; gap: $spacing-04; margin-block: $spacing-04;
+  &__value { @include type.type-style('productive-heading-07'); font-family: 'IBM Plex Mono', monospace; }
+  &__label { color: theme.$text-secondary; @include type.type-style('helper-text-01'); }
+  &--ok &__value { color: theme.$support-success; }
+  &--bad &__value { color: theme.$support-error; }
+}
+
+.trace-progress { margin-block: $spacing-05; overflow-x: auto; }
+.chat { display: grid; align-content: start; gap: $spacing-04; max-block-size: 520px; overflow-y: auto; padding-inline-end: $spacing-02; }
+.chat__msg {
+  padding: $spacing-04; @include type.type-style('body-compact-01'); background: theme.$layer-01;
+  border-inline-start: 4px solid theme.$border-interactive;
+  &--user { background: theme.$layer-02; border-inline-start-color: theme.$text-secondary; }
+  &--warn { border-inline-start-color: theme.$support-warning; }
+  &--fail { border-inline-start-color: theme.$support-error; }
+  &__who { color: theme.$text-secondary; @include type.type-style('label-01'); margin-block-end: $spacing-02; display: block; }
+}
+
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: $spacing-03; }
+.check {
+  display: grid; grid-template-columns: 1.5rem 1fr auto; gap: $spacing-03; align-items: start;
+  padding: $spacing-03 $spacing-04; background: theme.$layer-01; @include type.type-style('body-compact-01');
+  &--pending { opacity: 0.45; }
+  &__sys { color: theme.$text-secondary; @include type.type-style('helper-text-01'); display: block; }
+  &__detail { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: theme.$text-secondary; display: block; margin-block-start: $spacing-02; }
+  &__time { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: theme.$text-secondary; }
+  &--ok svg { fill: theme.$support-success; }
+  &--warn svg { fill: theme.$support-warning; }
+  &--fail svg { fill: theme.$support-error; }
+}
+
+.evidence {
+  margin-block-start: $spacing-05;
+  border-inline-start: 4px solid theme.$support-success;
+  &--gap { border-inline-start-color: theme.$support-error; }
+  &__id { font-family: 'IBM Plex Mono', monospace; }
+  &__actions { margin-block-start: $spacing-04; }
+}
+
+.lineage { margin-block-start: $spacing-04; }
+.lineage code { font-family: 'IBM Plex Mono', monospace; }
+
+// ---- Problem / Results
+.pain-list { display: grid; gap: $spacing-04; li { background: theme.$layer-01; padding: $spacing-04; border-inline-start: 4px solid theme.$support-error; } }
+
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: $spacing-05; }
+.compare-card {
+  &__pct { @include type.type-style('productive-heading-06'); color: theme.$support-success; }
+  &__row { display: flex; gap: $spacing-05; align-items: baseline; margin-block: $spacing-03; }
+  &__row div { flex: 1; }
+  dt { color: theme.$text-secondary; @include type.type-style('label-01'); }
+  dd { margin: 0; @include type.type-style('heading-04'); }
+}
+
+.mermaid-wrap { background: theme.$layer-01; padding: $spacing-05; overflow-x: auto; svg { max-width: 100%; height: auto; } }
+
+.app-footer { margin-top: $spacing-08; padding: $spacing-05 $spacing-06; color: theme.$text-secondary; @include type.type-style('helper-text-01'); }

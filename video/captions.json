@@ -1,0 +1,80 @@
+[
+  {
+    "start": 3.449,
+    "end": 10.449,
+    "title": "Scenario",
+    "text": "A bank failed an audit: a three-year-old Db2 backup could not be traced. The synthetic estate here holds 222 month-end image copies for six objects."
+  },
+  {
+    "start": 10.462,
+    "end": 18.462,
+    "title": "Dashboard",
+    "text": "The Db2 catalog only keeps limited history, so older backups vanish from it. Teal bars are recoverable only through ADDI lineage. Red marks two true gaps."
+  },
+  {
+    "start": 20.159,
+    "end": 28.159,
+    "title": "The problem",
+    "text": "The search fell to developers, took days, pulled capacity from planned work, and left no repeatable evidence trail for the auditor."
+  },
+  {
+    "start": 28.173,
+    "end": 33.673,
+    "title": "The target",
+    "text": "Locate and validate the backup in under 15 minutes, with 100% auditable traceability. Durations shown are illustrative."
+  },
+  {
+    "start": 35.262,
+    "end": 39.762,
+    "title": "Solution",
+    "text": "Pick a preset scenario. Nobody types. The audit analyst asks for the general ledger backup of 30 November 2023."
+  },
+  {
+    "start": 39.802,
+    "end": 45.302,
+    "title": "IBM watsonx Assistant for Z (simulated)",
+    "text": "The assistant interprets the request, checks the Db2 catalog, finds no row, and says why: history older than the retention window is gone."
+  },
+  {
+    "start": 45.311,
+    "end": 50.811,
+    "title": "IBM ADDI for IBM Z (simulated)",
+    "text": "ADDI lineage identifies the COPY job that ran that night. The dataset is located on virtual tape with its volume serial."
+  },
+  {
+    "start": 52.432,
+    "end": 60.432,
+    "title": "Evidence",
+    "text": "Integrity and a simulated recoverability dry run pass. The evidence package is sealed, every check with its source system and timestamp. Total: under three minutes."
+  },
+  {
+    "start": 61.117,
+    "end": 66.11699999999999,
+    "title": "An honest answer",
+    "text": "Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere."
+  },
+  {
+    "start": 71.586,
+    "end": 78.586,
+    "title": "Auditable either way",
+    "text": "The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes."
+  },
+  {
+    "start": 80.37,
+    "end": 88.37,
+    "title": "Results (illustrative targets)",
+    "text": "From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results."
+  },
+  {
+    "start": 90.867,
+    "end": 99.867,
+    "title": "Architecture",
+    "text": "Conversation on top, ADDI lineage in the middle, the Db2 and z/OS estate underneath, and an evidence package at the end. No REST API and no watsonx.ai: both IBM products are simulated screens."
+  },
+  {
+    "start": 99.883,
+    "end": 105.883,
+    "title": "Next step",
+    "text": "A Client Engineering pilot connects this flow to the bank’s real ADDI project and Db2 subsystem in 3 to 4 weeks. Built with IBM Bob. Synthetic data only."
+  }
+]
