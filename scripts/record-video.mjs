@@ -34,10 +34,16 @@ const S = {
   honest: ['An honest answer', 'Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere.', 5000],
   auditable: ['Auditable either way', 'The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes.', 7000],
   results: ['Results (illustrative targets)', 'From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results.', 8000],
-  architecture: ['Architecture, in five steps', 'One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, and seal the evidence.', 7000],
-  deployed: ['What is deployed today', 'Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, and there is no REST API or watsonx.ai.', 8000],
-  next: ['Conclusion and next steps', 'This shows the flow, not the products. The target of under 15 minutes is still to be proven. Next: agree the scope, confirm product capabilities, measure today, then run a three to four week pilot on the bank’s real systems.', 9000],
+  architecture: ['Architecture', '', 9000],
+  deployed: ['What is deployed today', '', 8000],
+  next: ['Conclusion and next steps', '', 10000],
 };
+// The last three scenes (title + text) come from ARQUITECTURE_2.md, shared by the silent and narrated videos.
+const arq = readFileSync('ARQUITECTURE_2.md', 'utf8');
+for (const m of arq.matchAll(/^### (\w+) \| (.+)\r?\n+([\s\S]*?)(?=\r?\n### |\r?\n## |$)/gm)) {
+  if (S[m[1]]) S[m[1]] = [m[2].trim(), m[3].trim().replace(/\s*\r?\n\s*/g, ' '), S[m[1]][2]];
+}
+for (const k of ['architecture', 'deployed', 'next']) if (!S[k][1]) { console.error(`ARQUITECTURE_2.md: scene "${k}" not found`); process.exit(2); }
 
 // How the text is pronounced by the voice (captions keep the written form).
 const SPEECH = [
@@ -136,6 +142,8 @@ async function say(key) {
     cues.push({ file: a.file, at: startSec + 0.3 });
   }
   captions.push({ start: startSec, end: startSec + hold / 1000, title, text });
+  // Narrated video: the voice carries the notes, so no caption bar is burned in (subtitles stay in the .srt).
+  if (NARRATE) { await wait(hold); return; }
   await page.evaluate(([ti, tx]) => {
     let el = document.getElementById('video-caption');
     if (!el) {
@@ -172,13 +180,13 @@ async function styled(name) {
     return {
       font: cs.fontFamily, bg: cs.backgroundColor, header: !!document.querySelector('.cds--header'),
       plex: [...document.fonts].filter((f) => f.family.replace(/"/g, '') === 'IBM Plex Sans' && f.status === 'loaded').length,
-      banner: document.body.innerText.includes('Demonstration Environment'),
+      banner: document.body.innerText.includes('All data is synthetic') && !document.body.innerText.includes('Demonstration Environment'),
       footer: document.body.innerText.includes('uses synthetic data'),
     };
   });
   check(`${name}: Carbon styled (Plex, g90, header)`, /IBM Plex/i.test(info.font) && info.bg === 'rgb(38, 38, 38)' && info.header, `${info.font.slice(0, 24)} / ${info.bg}`);
   check(`${name}: Plex font files loaded`, info.plex >= 1, `${info.plex} face(s)`);
-  check(`${name}: DemoBanner + footer`, info.banner && info.footer);
+  check(`${name}: disclaimer + footer, no "Demonstration Environment" title`, info.banner && info.footer);
 }
 
 // ---------------------------------------------------------------- Dashboard
@@ -252,9 +260,21 @@ await say('results');
 
 // ---------------------------------------------------------------- Architecture
 where = 'architecture';
-await goto('#/architecture', '.arch-flow');
+await goto('#/architecture', '#arch-diagram');
+await page.waitForFunction(() => document.getElementById('arch-diagram').complete && document.getElementById('arch-diagram').naturalWidth > 0);
 await styled('architecture');
-check('architecture: 5 flow steps', (await page.locator('.arch-step').count()) === 5);
+// Both SVGs must actually load (a broken image still passes a selector check).
+const imgOk = (id) => page.evaluate((i) => { const e = document.getElementById(i); return !!e && e.complete && e.naturalWidth > 0; }, id);
+check('architecture: functionality diagram (SVG) loaded', await imgOk('arch-diagram'));
+// The diagrams are tall: centre each one, then assert it is fully visible, below the header and above the caption bar (if shown).
+const fullyVisible = (id) => page.evaluate((i) => {
+  const r = document.getElementById(i).getBoundingClientRect(); const cap = document.getElementById('video-caption');
+  const floor = cap ? cap.getBoundingClientRect().top : window.innerHeight;
+  return r.top >= 96 && r.bottom <= floor;
+}, id);
+await page.evaluate(() => document.getElementById('arch-diagram').scrollIntoView({ block: 'center' }));
+await wait(500);
+check('architecture: functionality diagram fully visible', await fullyVisible('arch-diagram'));
 await shot('06-architecture');
 await say('architecture');
 await page.getByRole('heading', { name: 'What is deployed today' }).scrollIntoViewIfNeeded();
@@ -262,17 +282,10 @@ await wait(400);
 check('architecture: deployed table lists simulated + not connected', await page.locator('main.page').innerText().then((t) => /Simulated/.test(t) && /Not connected/.test(t)));
 await shot('07-architecture-deployed');
 await say('deployed');
-await page.evaluate(() => {
-  const h = [...document.querySelectorAll('h2')].find((e) => /Conclusion and next steps/.test(e.textContent));
-  window.scrollTo(0, h.getBoundingClientRect().top + window.scrollY - 120);
-});
-await wait(400);
-check('architecture: conclusion fully above caption', await page.evaluate(() => {
-  const c = document.querySelector('.conclusion').getBoundingClientRect();
-  const cap = document.getElementById('video-caption').getBoundingClientRect();
-  return c.bottom <= cap.top;
-}));
-check('architecture: conclusion present', await page.locator('.conclusion').innerText().then((t) => /What happens next/.test(t) && /What we need from the bank/.test(t)));
+await page.evaluate(() => document.getElementById('conclusion-diagram').scrollIntoView({ block: 'center' }));
+await wait(500);
+check('architecture: conclusion (SVG) loaded', await imgOk('conclusion-diagram'));
+check('architecture: conclusion diagram fully visible', await fullyVisible('conclusion-diagram'));
 await shot('08-architecture-conclusion');
 await say('next');
 

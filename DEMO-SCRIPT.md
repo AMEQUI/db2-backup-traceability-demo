@@ -1,8 +1,8 @@
 ﻿# Demo Script: video with on-screen notes (silent and narrated versions)
 
 **Formats:**
-- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 3 min 18 s, 1920x1080, with a synthetic offline voice reading the same notes. Subtitles: `video/captions-narrated.srt`. Each scene holds until its sentence finishes, so its cue times differ from the table below.
-- **Silent:** `video/db2-backup-traceability-demo.webm`, about 1 min 54 s, no audio. Notes are burned in as captions (`video/captions.srt`). The timings in the table below are for this version.
+- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 4 min 1 s, 1920x1080, with a synthetic offline voice reading the same notes. Subtitles: `video/captions-narrated.srt`. Each scene holds until its sentence finishes, so its cue times differ from the table below.
+- **Silent:** `video/db2-backup-traceability-demo.webm`, about 2 min, no audio. Notes are burned in as captions (`video/captions.srt`). The timings in the table below are for this version.
 
 Use this script as the voice-over notes if you present it live instead of playing a video.
 

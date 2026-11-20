@@ -14,9 +14,11 @@ Illustrative demo built with IBM Bob â€” uses synthetic data. Product scree
 
 | File | What it is |
 |---|---|
-| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 3 min 18 s, 1920x1080, H.264 + AAC, with the notes also burned in as captions. The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
-| `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 1 min 54 s, 1920x1080, no audio track. Notes appear as on-screen captions. |
+| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 4 min 1 s, 1920x1080, H.264 + AAC, voice only (no on-screen caption bar; the notes are in `captions-narrated.srt`). The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
+| `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 2 min, 1920x1080, no audio track. Notes appear as on-screen captions. |
 | `video/captions.srt`, `video/captions-narrated.srt` | The same notes as subtitles for each version (for editing or a sidecar track). |
+| `ARQUITECTURE_2.md` | Source text for the architecture, deployed-today and conclusion scenes of **both** videos. Edit it and re-record to change them. |
+| `public/diagrams/architecture.svg`, `conclusion.svg` | The two IBM-format diagrams shown on the Architecture page and in both videos (editable SVG, no photo, no logo). |
 | `DEMO-SCRIPT.md` | Presenter notes and talk track for the video, timed. |
 | Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). Both videos are under `./video/` on the same site. |
 
@@ -46,7 +48,7 @@ Regenerate the synthetic data (fixed seed 42, identical every run):
 npm run data
 ```
 
-Re-record the silent video (needs `npm run build` first; also runs 30 checks and fails on any console error or unstyled Carbon):
+Re-record the silent video (needs `npm run build` first; also runs 31 checks and fails on any console error or unstyled Carbon):
 
 ```bash
 npm run build

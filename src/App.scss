@@ -134,24 +134,10 @@
   dd { margin: 0; @include type.type-style('heading-04'); }
 }
 
-// ---- Architecture (plain flow + conclusion)
-.arch-flow {
-  list-style: none; margin: 0 0 $spacing-07; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: $spacing-04;
-}
-.arch-step {
-  background: theme.$layer-01; padding: $spacing-05; border-block-start: 4px solid theme.$border-interactive;
-  display: flex; flex-direction: column; gap: $spacing-03; @include type.type-style('body-compact-01');
-  p { margin: 0; }
-  &__n { @include type.type-style('productive-heading-05'); color: theme.$text-secondary; }
-  &__title { @include type.type-style('heading-03'); margin: 0; }
-  &__who { color: theme.$text-secondary; @include type.type-style('label-01'); }
-  .cds--tag { align-self: flex-start; margin-inline: 0; margin-block-start: auto; }
-}
-.conclusion {
-  max-inline-size: 60rem;
-  p { margin-block-end: $spacing-04; }
-  h3 { @include type.type-style('heading-03'); margin-block: $spacing-05 $spacing-03; }
+// ---- Architecture: IBM-format SVG diagrams (light panels, kept as designed on the dark page)
+.diagram {
+  margin: 0 0 $spacing-06;
+  img { display: block; inline-size: 100%; max-inline-size: 1100px; block-size: auto; border: 1px solid theme.$border-subtle-01; }
 }
 
 .app-footer { margin-top: $spacing-08; padding: $spacing-05 $spacing-06; color: theme.$text-secondary; @include type.type-style('helper-text-01'); }

@@ -1,86 +1,86 @@
 [
   {
-    "start": 1.778,
-    "end": 8.778,
+    "start": 3.638,
+    "end": 10.638,
     "title": "Scenario",
     "text": "A bank failed an audit: a three-year-old Db2 backup could not be traced. The synthetic estate here holds 222 month-end image copies for six objects."
   },
   {
-    "start": 8.797,
-    "end": 16.797,
+    "start": 10.655,
+    "end": 18.655,
     "title": "Dashboard",
     "text": "The Db2 catalog only keeps limited history, so older backups vanish from it. Teal bars are recoverable only through ADDI lineage. Red marks two true gaps."
   },
   {
-    "start": 18.556,
-    "end": 26.556,
+    "start": 20.425,
+    "end": 28.425,
     "title": "The problem",
     "text": "The search fell to developers, took days, pulled capacity from planned work, and left no repeatable evidence trail for the auditor."
   },
   {
-    "start": 26.583,
-    "end": 32.083,
+    "start": 28.434,
+    "end": 33.934,
     "title": "The target",
     "text": "Locate and validate the backup in under 15 minutes, with 100% auditable traceability. Durations shown are illustrative."
   },
   {
-    "start": 33.686,
-    "end": 38.186,
+    "start": 35.577,
+    "end": 40.077,
     "title": "Solution",
     "text": "Pick a preset scenario. Nobody types. The audit analyst asks for the general ledger backup of 30 November 2023."
   },
   {
-    "start": 38.266,
-    "end": 43.766,
+    "start": 40.155,
+    "end": 45.655,
     "title": "IBM watsonx Assistant for Z (simulated)",
     "text": "The assistant interprets the request, checks the Db2 catalog, finds no row, and says why: history older than the retention window is gone."
   },
   {
-    "start": 43.771,
-    "end": 49.271,
+    "start": 45.672,
+    "end": 51.172,
     "title": "IBM ADDI for IBM Z (simulated)",
     "text": "ADDI lineage identifies the COPY job that ran that night. The dataset is located on virtual tape with its volume serial."
   },
   {
-    "start": 50.929,
-    "end": 58.929,
+    "start": 52.776,
+    "end": 60.776,
     "title": "Evidence",
     "text": "Integrity and a simulated recoverability dry run pass. The evidence package is sealed, every check with its source system and timestamp. Total: about five simulated minutes, well under the 15-minute target."
   },
   {
-    "start": 59.641,
-    "end": 64.64099999999999,
+    "start": 61.524,
+    "end": 66.524,
     "title": "An honest answer",
     "text": "Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere."
   },
   {
-    "start": 70.19,
-    "end": 77.19,
+    "start": 71.987,
+    "end": 78.987,
     "title": "Auditable either way",
     "text": "The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes."
   },
   {
-    "start": 78.958,
-    "end": 86.958,
+    "start": 80.781,
+    "end": 88.781,
     "title": "Results (illustrative targets)",
     "text": "From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results."
   },
   {
-    "start": 88.67,
-    "end": 95.67,
-    "title": "Architecture, in five steps",
-    "text": "One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, and seal the evidence."
+    "start": 91.344,
+    "end": 100.344,
+    "title": "Architecture",
+    "text": "A person asks in plain language. The simulated IBM watsonx Assistant for Z runs four steps: look up the catalog, find lineage when the catalog is empty, locate and validate the backup, and seal the evidence. The simulated ADDI supplies the lineage. A DBA reviews the evidence package."
   },
   {
-    "start": 96.224,
-    "end": 104.224,
+    "start": 101.055,
+    "end": 109.055,
     "title": "What is deployed today",
     "text": "Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, and there is no REST API or watsonx.ai."
   },
   {
-    "start": 104.748,
-    "end": 113.748,
+    "start": 109.786,
+    "end": 119.786,
     "title": "Conclusion and next steps",
-    "text": "This shows the flow, not the products. The target of under 15 minutes is still to be proven. Next: agree the scope, confirm product capabilities, measure today, then run a three to four week pilot on the bank’s real systems."
+    "text": "This demo shows the flow, not the products. The target of under 15 minutes with 100 percent auditable traceability is still to be proven. Next: agree the scope in a short Sprint 0, confirm what is possible with the product teams, measure today's baseline, then run a three to four week pilot on the bank's real systems. We need a DBA, an application owner, an audit reviewer and read-only access. The goal is to validate value with real data and define the path to scale."
   }
 ]

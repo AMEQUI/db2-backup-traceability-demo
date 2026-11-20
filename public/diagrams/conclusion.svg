@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024" role="img" aria-labelledby="t d" font-family="'IBM Plex Sans','Helvetica Neue',Arial,sans-serif">
+  <title id="t">Conclusion and next steps with the client</title>
+  <desc id="d">What this demo shows: the flow, not the products. What we still have to prove: under 15 minutes with 100 percent auditable traceability, simulated and illustrative. What happens next: agree the scope, confirm what is possible, measure today, run the pilot. What we need from the bank, and the goal: validate value with real data and define the path to scale.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef4fc"/><stop offset="0.55" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f6fd"/></linearGradient>
+    <linearGradient id="rack" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1740"/><stop offset="0.6" stop-color="#10286a"/><stop offset="1" stop-color="#0a5bd8"/></linearGradient>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,1 L9,5 L0,9" fill="none" stroke="#8d97aa" stroke-width="1.4"/></marker>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#bg)"/>
+
+  <!-- IBM Z visual: dark panel, no photo and no logo -->
+  <polygon points="1536,40 1536,957 1420,957 1360,780 1290,640 1296,430" fill="url(#rack)"/>
+  <g fill="#ffffff" opacity=".07"><rect x="1330" y="330" width="70" height="560"/><rect x="1410" y="250" width="70" height="640"/><rect x="1490" y="160" width="46" height="720"/></g>
+  <g fill="#4d8dff" opacity=".35"><rect x="1346" y="360" width="38" height="4"/><rect x="1426" y="280" width="38" height="4"/><rect x="1346" y="372" width="24" height="4"/><rect x="1426" y="292" width="24" height="4"/></g>
+  <text x="1340" y="545" font-size="35" font-weight="500" fill="#fff">Let’s build</text>
+  <text x="1340" y="583" font-size="35" font-weight="500" fill="#fff">what’s next.</text>
+  <text x="1340" y="621" font-size="35" font-weight="500" fill="#fff">Together.</text>
+  <rect x="1340" y="648" width="52" height="4" fill="#4589ff"/>
+
+  <!-- Title -->
+  <rect x="52" y="33" width="76" height="5" fill="#0f62fe"/>
+  <text x="50" y="100" font-size="56" font-weight="700" fill="#0a1f5c">Conclusion and next steps with the client</text>
+  <text x="52" y="150" font-size="35" fill="#6f7787">From a simulated demo to real business impact on IBM Z</text>
+
+  <!-- What this demo shows -->
+  <rect x="50" y="182" width="612" height="187" rx="6" fill="#e9f1fd" stroke="#bcd3f5"/>
+  <circle cx="107" cy="246" r="43" fill="#0f62fe"/>
+  <g fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"><path d="M95,246 a13,13 0 1 1 24,0 c-4,5 -5,8 -5,12 h-14 c0,-4 -1,-7 -5,-12z"/><path d="M101,266 h12"/></g>
+  <text x="179" y="228" font-size="29" font-weight="700" fill="#0f4fd6">What this demo shows</text>
+  <text font-size="19" fill="#0a1f5c"><tspan x="179" y="259">The flow, not the products. A <tspan font-weight="700">three-year-old Db2</tspan></tspan><tspan x="179" y="284">backup can be located and validated as one</tspan><tspan x="179" y="309">traceable conversation, and a backup that cannot</tspan><tspan x="179" y="334">be proven is reported as a finding, with the evidence.</tspan></text>
+
+  <!-- What we still have to prove -->
+  <rect x="686" y="182" width="596" height="187" rx="6" fill="#efe9fc" stroke="#b8a5ea"/>
+  <circle cx="758" cy="256" r="44" fill="#6929c4"/>
+  <g fill="none" stroke="#fff" stroke-width="3.5"><circle cx="758" cy="256" r="24"/><circle cx="758" cy="256" r="13"/><path d="M758,256 L781,233"/></g><circle cx="758" cy="256" r="4" fill="#fff"/>
+  <text x="831" y="231" font-size="29" font-weight="700" fill="#6929c4">What we still have to prove</text>
+  <text font-size="19" fill="#0a1f5c"><tspan x="831" y="266">The target of under 15 minutes with</tspan><tspan x="831" y="291">100% auditable traceability. The times</tspan><tspan x="831" y="316">shown here are simulated and illustrative,</tspan><tspan x="831" y="341">not measured.</tspan></text>
+
+  <!-- What happens next -->
+  <rect x="50" y="395" width="1226" height="362" rx="6" fill="#ffffff" fill-opacity=".85" stroke="#bcd3f5"/>
+  <text x="70" y="437" font-size="32" font-weight="700" fill="#0a1f5c">What happens next</text>
+
+  <g>
+    <circle cx="108" cy="481" r="20" fill="#0f62fe"/><text x="108" y="489" font-size="21" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+    <circle cx="191" cy="496" r="37" fill="#e3ecfb"/><path d="M175,478 h32 v38 h-32z M181,488 h20 M181,497 h20 M181,506 h12" fill="none" stroke="#0f4fd6" stroke-width="3"/>
+    <text font-size="25" font-weight="700" fill="#0a2a9a"><tspan x="85" y="561">Agree the scope</tspan></text>
+    <text font-size="20" font-weight="700" fill="#0a2a9a"><tspan x="85" y="587">(Sprint 0, 2 to 3 days)</tspan></text>
+    <text font-size="18" fill="#0a1f5c"><tspan x="85" y="615">One Db2 subsystem, the</tspan><tspan x="85" y="638">named applications to scan</tspan><tspan x="85" y="661">in ADDI, and 10 real historical</tspan><tspan x="85" y="684">backup requests to trace.</tspan></text>
+  </g>
+  <path d="M293,509 H340" stroke="#8d97aa" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <g>
+    <circle cx="396" cy="481" r="20" fill="#6929c4"/><text x="396" y="489" font-size="21" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    <circle cx="484" cy="496" r="37" fill="#ece6fa"/><circle cx="484" cy="496" r="12" fill="none" stroke="#6929c4" stroke-width="3.5"/><path d="M484,474 v-4 M484,522 v4 M462,496 h-4 M506,496 h4 M468,480 l-3,-3 M500,512 l3,3 M500,480 l3,-3 M468,512 l-3,3" stroke="#6929c4" stroke-width="3.5" stroke-linecap="round"/>
+    <text font-size="25" font-weight="700" fill="#0a2a9a"><tspan x="377" y="561">Confirm what is</tspan><tspan x="377" y="588">possible</tspan></text>
+    <text font-size="18" fill="#0a1f5c"><tspan x="377" y="616">Verify ADDI and Assistant</tspan><tspan x="377" y="639">for Z capabilities and</tspan><tspan x="377" y="662">prerequisites with the</tspan><tspan x="377" y="685">product teams. Agree</tspan><tspan x="377" y="708">read-only access and</tspan><tspan x="377" y="731">security approvals.</tspan></text>
+  </g>
+  <path d="M594,509 H641" stroke="#8d97aa" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <g>
+    <circle cx="697" cy="481" r="20" fill="#0f62fe"/><text x="697" y="489" font-size="21" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+    <circle cx="780" cy="496" r="37" fill="#e3ecfb"/><g fill="none" stroke="#0f4fd6" stroke-width="4"><rect x="762" y="500" width="9" height="20"/><rect x="777" y="486" width="9" height="34"/><rect x="792" y="474" width="9" height="46"/></g>
+    <text font-size="25" font-weight="700" fill="#0a2a9a"><tspan x="677" y="561">Measure today</tspan></text>
+    <text font-size="18" fill="#0a1f5c"><tspan x="677" y="600">Time how long a three-</tspan><tspan x="677" y="623">year-old backup takes to</tspan><tspan x="677" y="646">locate and validate now,</tspan><tspan x="677" y="669">and how many developer</tspan><tspan x="677" y="692">hours it uses. This is the</tspan><tspan x="677" y="715">baseline.</tspan></text>
+  </g>
+  <path d="M895,509 H942" stroke="#8d97aa" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+  <g>
+    <circle cx="998" cy="481" r="20" fill="#007d79"/><text x="998" y="489" font-size="21" font-weight="700" fill="#fff" text-anchor="middle">4</text>
+    <circle cx="1093" cy="496" r="37" fill="#dff3f1"/><g fill="#007d79"><circle cx="1093" cy="487" r="8"/><circle cx="1074" cy="492" r="6"/><circle cx="1112" cy="492" r="6"/><path d="M1080,518 a13,12 0 0 1 26,0z"/><path d="M1064,516 a10,9 0 0 1 17,-6 v6z"/><path d="M1122,516 a10,9 0 0 0 -17,-6 v6z"/></g>
+    <text font-size="25" font-weight="700" fill="#0a2a9a"><tspan x="978" y="561">Run the pilot</tspan></text>
+    <text font-size="20" font-weight="700" fill="#0a2a9a"><tspan x="978" y="587">(weeks 1 to 4)</tspan></text>
+    <text font-size="18" fill="#0a1f5c"><tspan x="978" y="616">Connect the real products</tspan><tspan x="978" y="639">on non-production data</tspan><tspan x="978" y="662">first, trace the 10 requests,</tspan><tspan x="978" y="685">and report against the</tspan><tspan x="978" y="708">success criteria.</tspan></text>
+  </g>
+
+  <!-- What we need from the bank -->
+  <rect x="50" y="781" width="1296" height="157" rx="6" fill="#e7f5e9" stroke="#8fd09b"/>
+  <circle cx="107" cy="844" r="43" fill="#0e6027"/>
+  <g fill="#fff"><circle cx="107" cy="832" r="9"/><circle cx="84" cy="838" r="7"/><circle cx="130" cy="838" r="7"/><path d="M92,866 a15,14 0 0 1 30,0z"/><path d="M72,864 a12,11 0 0 1 20,-7 v7z"/><path d="M142,864 a12,11 0 0 0 -20,-7 v7z"/></g>
+  <text x="183" y="822" font-size="28" font-weight="700" fill="#0e6027">What we need from the bank</text>
+  <text font-size="18" fill="#0a1f5c"><tspan x="183" y="852">A Db2 / z/OS DBA, a mainframe application owner, an internal audit</tspan><tspan x="183" y="876">reviewer, read-only access, and a decision on which backups to trace</tspan><tspan x="183" y="900">first. Outcome in 3 to 4 weeks: measured results against the agreed</tspan><tspan x="183" y="924">criteria, with a go or no-go for wider rollout.</tspan></text>
+  <path d="M1000,801 V919" stroke="#8fd09b" stroke-width="2"/>
+  <g fill="none" stroke="#0e6027" stroke-width="3.5"><circle cx="1050" cy="855" r="22"/><circle cx="1050" cy="855" r="12"/><path d="M1050,855 L1070,835"/></g><circle cx="1050" cy="855" r="3.5" fill="#0e6027"/>
+  <text x="1098" y="834" font-size="24" font-weight="700" fill="#0e6027">Goal</text>
+  <text font-size="18" fill="#0a1f5c"><tspan x="1098" y="863">Validate value with real data</tspan><tspan x="1098" y="886">and define the path to scale.</tspan></text>
+
+  <!-- Footer bar -->
+  <rect x="0" y="957" width="1536" height="67" fill="#0b1a45"/>
+  <rect x="52" y="975" width="3" height="26" fill="#0f62fe"/>
+  <text x="75" y="993" font-size="16" fill="#dce4f7">Illustrative demo built with IBM Bob — uses synthetic data. Product screens are simulated; no IBM service is called.</text>
+  <text x="1484" y="996" font-size="17" fill="#dce4f7" text-anchor="end"><tspan font-weight="700" fill="#fff">IBM Z</tspan><tspan>   |   Security. AI. Modernization. Together.</tspan></text>
+</svg>

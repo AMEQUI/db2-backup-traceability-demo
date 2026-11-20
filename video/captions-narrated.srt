@@ -1,55 +1,55 @@
 1
-00:00:04,588 --> 00:00:18,286
+00:00:03,953 --> 00:00:17,651
 Scenario: A bank failed an audit: a three-year-old Db2 backup could not be traced. The synthetic estate here holds 222 month-end image copies for six objects.
 
 2
-00:00:18,309 --> 00:00:32,742
+00:00:17,656 --> 00:00:32,089
 Dashboard: The Db2 catalog only keeps limited history, so older backups vanish from it. Teal bars are recoverable only through ADDI lineage. Red marks two true gaps.
 
 3
-00:00:34,481 --> 00:00:44,924
+00:00:33,824 --> 00:00:44,267
 The problem: The search fell to developers, took days, pulled capacity from planned work, and left no repeatable evidence trail for the auditor.
 
 4
-00:00:44,939 --> 00:00:55,972
+00:00:44,276 --> 00:00:55,309
 The target: Locate and validate the backup in under 15 minutes, with 100% auditable traceability. Durations shown are illustrative.
 
 5
-00:00:57,602 --> 00:01:09,325
+00:00:56,914 --> 00:01:08,637
 Solution: Pick a preset scenario. Nobody types. The audit analyst asks for the general ledger backup of 30 November 2023.
 
 6
-00:01:09,379 --> 00:01:21,413
+00:01:08,781 --> 00:01:20,815
 IBM watsonx Assistant for Z (simulated): The assistant interprets the request, checks the Db2 catalog, finds no row, and says why: history older than the retention window is gone.
 
 7
-00:01:21,426 --> 00:01:32,074
+00:01:20,826 --> 00:01:31,474
 IBM ADDI for IBM Z (simulated): ADDI lineage identifies the COPY job that ran that night. The dataset is located on virtual tape with its volume serial.
 
 8
-00:01:33,718 --> 00:01:50,855
+00:01:33,085 --> 00:01:50,222
 Evidence: Integrity and a simulated recoverability dry run pass. The evidence package is sealed, every check with its source system and timestamp. Total: about five simulated minutes, well under the 15-minute target.
 
 9
-00:01:51,562 --> 00:02:01,126
+00:01:50,988 --> 00:02:00,552
 An honest answer: Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere.
 
 10
-00:02:02,723 --> 00:02:14,316
+00:02:02,180 --> 00:02:13,773
 Auditable either way: The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes.
 
 11
-00:02:16,062 --> 00:02:28,400
+00:02:15,583 --> 00:02:27,921
 Results (illustrative targets): From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results.
 
 12
-00:02:30,076 --> 00:02:42,969
-Architecture, in five steps: One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, and seal the evidence.
+00:02:30,348 --> 00:02:54,944
+Architecture: A person asks in plain language. The simulated IBM watsonx Assistant for Z runs four steps: look up the catalog, find lineage when the catalog is empty, locate and validate the backup, and seal the evidence. The simulated ADDI supplies the lineage. A DBA reviews the evidence package.
 
 13
-00:02:43,524 --> 00:02:57,982
+00:02:55,577 --> 00:03:10,035
 What is deployed today: Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, and there is no REST API or watsonx.ai.
 
 14
-00:02:58,525 --> 00:03:17,437
-Conclusion and next steps: This shows the flow, not the products. The target of under 15 minutes is still to be proven. Next: agree the scope, confirm product capabilities, measure today, then run a three to four week pilot on the bank’s real systems.
+00:03:10,803 --> 00:03:47,652
+Conclusion and next steps: This demo shows the flow, not the products. The target of under 15 minutes with 100 percent auditable traceability is still to be proven. Next: agree the scope in a short Sprint 0, confirm what is possible with the product teams, measure today's baseline, then run a three to four week pilot on the bank's real systems. We need a DBA, an application owner, an audit reviewer and read-only access. The goal is to validate value with real data and define the path to scale.
