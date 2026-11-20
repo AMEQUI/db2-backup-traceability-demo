@@ -14,10 +14,11 @@ Illustrative demo built with IBM Bob — uses synthetic data. Product screens ar
 
 | File | What it is |
 |---|---|
-| `video/db2-backup-traceability-demo.webm` | Silent walkthrough, about 1 min 46 s, 1920x1080, **no audio track**. Notes appear as on-screen captions. |
-| `video/captions.srt` | The same notes as subtitles (for editing or a sidecar track). |
+| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 3 min 17 s, 1920x1080, H.264 + AAC, with the notes also burned in as captions. The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
+| `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 1 min 50 s, 1920x1080, no audio track. Notes appear as on-screen captions. |
+| `video/captions.srt`, `video/captions-narrated.srt` | The same notes as subtitles for each version (for editing or a sidecar track). |
 | `DEMO-SCRIPT.md` | Presenter notes and talk track for the video, timed. |
-| Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). The video is at `./video/db2-backup-traceability-demo.webm` on the same site. |
+| Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). Both videos are under `./video/` on the same site. |
 
 ## Prerequisites
 
@@ -45,13 +46,22 @@ Regenerate the synthetic data (fixed seed 42, identical every run):
 npm run data
 ```
 
-Re-record the silent video (needs `npm run build` first; also runs 25 checks and fails on any console error or unstyled Carbon):
+Re-record the silent video (needs `npm run build` first; also runs 26 checks and fails on any console error or unstyled Carbon):
 
 ```bash
 npm run build
 npx playwright-core install ffmpeg   # one time, downloads Playwright's recorder
 npm run video
 ```
+
+Re-record the narrated MP4 (Windows only: it uses the built-in `System.Speech` voices; also needs a full ffmpeg with libx264 and AAC, for example `winget install Gyan.FFmpeg`, or set `FFMPEG=<path to ffmpeg.exe>`; takes about 5 minutes because it records in real time):
+
+```bash
+npm run build
+npm run video:voice
+```
+
+Optional: `VOICE_NAME=David` picks another installed Windows voice. On macOS or Linux, record a voice-over yourself from `DEMO-SCRIPT.md` and mux it onto the silent video.
 
 If Chrome or Edge is not found, set `CHROME_PATH` (see `.env.example`).
 

@@ -54,7 +54,7 @@ graph TB
 1. `scripts/generate-data.mjs` writes `data/backups.json` (seed 42).
 2. `src/data/scenarios.js` derives, per preset scenario, seven timed checks and the outcome (validated or gap).
 3. `SolutionPage` replays the checks in order, driving the chat, the check list, the simulated clock and the evidence panel.
-4. `scripts/record-video.mjs` drives the built app in headless Chrome and records a silent WebM with caption notes.
+4. `scripts/record-video.mjs` drives the built app in headless Chrome and records a silent WebM with caption notes. With `--narrate` it also synthesizes the voice with the offline Windows voice (`scripts/synth-voice.ps1`) and muxes it with ffmpeg into an H.264/AAC MP4.
 
 ## Integration points (for a pilot, not built here)
 

@@ -9,6 +9,7 @@
     "preview": "vite preview --port 4173",
     "data": "node scripts/generate-data.mjs",
     "video": "node scripts/record-video.mjs",
+    "video:voice": "node scripts/record-video.mjs --narrate",
     "check": "node scripts/check-compliance.mjs"
   },
   "dependencies": {

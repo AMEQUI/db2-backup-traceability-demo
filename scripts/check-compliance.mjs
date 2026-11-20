@@ -6,7 +6,9 @@ let failed = 0;
 const check = (name, ok, detail = '') => { if (!ok) failed++; console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? ' - ' + detail : ''}`); };
 
 for (const f of ['README.md', 'DEMO-SCRIPT.md', 'ARCHITECTURE.md', 'PILOT_PLAN.md', '.env.example', '.gitignore', 'data/README.md',
-  'data/backups.json', 'video/db2-backup-traceability-demo.webm', 'video/captions.srt', '.github/workflows/pages.yml']) {
+  'data/backups.json', 'video/db2-backup-traceability-demo.webm', 'video/captions.srt',
+  'video/db2-backup-traceability-demo-narrated.mp4', 'video/captions-narrated.srt', 'public/video/db2-backup-traceability-demo-narrated.mp4',
+  '.github/workflows/pages.yml']) {
   check(`exists: ${f}`, existsSync(f));
 }
 
