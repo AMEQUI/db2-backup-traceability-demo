@@ -1,6 +1,6 @@
-﻿# Db2 Backup Traceability: find and prove a three-year-old backup in minutes, not days
+# Db2 Backup Traceability: find and prove a three-year-old backup in minutes, not days
 
-Illustrative demo built with IBM Bob â€” uses synthetic data. Product screens are simulated; no IBM service is called.
+Illustrative demo built with IBM Bob — uses synthetic data. Product screens are simulated; no IBM service is called.
 
 **Value statement:** an auditor's question about an old Db2 backup is answered with a complete, repeatable evidence trail in under 15 minutes (target), without pulling developers off planned work.
 
@@ -19,7 +19,7 @@ Illustrative demo built with IBM Bob â€” uses synthetic data. Product scree
 | `video/captions.srt`, `video/captions-narrated.srt` | The same notes as subtitles for each version (for editing or a sidecar track). |
 | `ARQUITECTURE_2.md` | Source text for the architecture, deployed-today and conclusion scenes of **both** videos. Edit it and re-record to change them. |
 | `public/diagrams/architecture.svg`, `conclusion.svg` | The two IBM-format diagrams shown on the Architecture page and in both videos (editable SVG, no photo, no logo). |
-| `DEMO-SCRIPT.md` | Presenter notes and talk track for the video, timed. |
+| `DEMO-SCRIPT.md` | Run of show for the video (what appears on screen, in order). No presenter notes. |
 | Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). Both videos are under `./video/` on the same site. |
 
 ## Prerequisites
@@ -63,7 +63,7 @@ npm run build
 npm run video:voice
 ```
 
-Optional: `VOICE_NAME=David` picks another installed Windows voice. On macOS or Linux, record a voice-over yourself from `DEMO-SCRIPT.md` and mux it onto the silent video.
+Optional: `VOICE_NAME=David` picks another installed Windows voice. On macOS or Linux, record a voice-over yourself from `video/captions.srt` and mux it onto the silent video.
 
 If Chrome or Edge is not found, set `CHROME_PATH` (see `.env.example`).
 
@@ -85,11 +85,11 @@ git remote add origin https://github.com/AMEQUI/db2-backup-traceability-demo.git
 git push -u origin main
 ```
 
-Then in the repository: **Settings â†’ Pages â†’ Build and deployment â†’ Source: GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and publishes on every push to `main`. The app uses relative asset paths and hash routing, so it works under the `/db2-backup-traceability-demo/` sub-path without server rewrites.
+Then in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and publishes on every push to `main`. The app uses relative asset paths and hash routing, so it works under the `/db2-backup-traceability-demo/` sub-path without server rewrites.
 
 ## What to show
 
-Follow [`DEMO-SCRIPT.md`](DEMO-SCRIPT.md). In short: Dashboard (the visibility gap), Problem, Solution (validated trace, then the honest gap), Results (illustrative targets), Architecture.
+Follow the run of show in [`DEMO-SCRIPT.md`](DEMO-SCRIPT.md). In short: Dashboard (the visibility gap), Problem, Solution (validated trace, then the honest gap), Results (illustrative targets), Architecture.
 
 ## Known limitations
 
