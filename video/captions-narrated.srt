@@ -1,51 +1,55 @@
 1
-00:00:04,532 --> 00:00:18,230
+00:00:04,588 --> 00:00:18,286
 Scenario: A bank failed an audit: a three-year-old Db2 backup could not be traced. The synthetic estate here holds 222 month-end image copies for six objects.
 
 2
-00:00:18,260 --> 00:00:32,693
+00:00:18,309 --> 00:00:32,742
 Dashboard: The Db2 catalog only keeps limited history, so older backups vanish from it. Teal bars are recoverable only through ADDI lineage. Red marks two true gaps.
 
 3
-00:00:34,434 --> 00:00:44,877
+00:00:34,481 --> 00:00:44,924
 The problem: The search fell to developers, took days, pulled capacity from planned work, and left no repeatable evidence trail for the auditor.
 
 4
-00:00:44,884 --> 00:00:55,917
+00:00:44,939 --> 00:00:55,972
 The target: Locate and validate the backup in under 15 minutes, with 100% auditable traceability. Durations shown are illustrative.
 
 5
-00:00:57,528 --> 00:01:09,251
+00:00:57,602 --> 00:01:09,325
 Solution: Pick a preset scenario. Nobody types. The audit analyst asks for the general ledger backup of 30 November 2023.
 
 6
-00:01:09,334 --> 00:01:21,368
+00:01:09,379 --> 00:01:21,413
 IBM watsonx Assistant for Z (simulated): The assistant interprets the request, checks the Db2 catalog, finds no row, and says why: history older than the retention window is gone.
 
 7
-00:01:21,385 --> 00:01:32,033
+00:01:21,426 --> 00:01:32,074
 IBM ADDI for IBM Z (simulated): ADDI lineage identifies the COPY job that ran that night. The dataset is located on virtual tape with its volume serial.
 
 8
-00:01:33,598 --> 00:01:50,735
+00:01:33,718 --> 00:01:50,855
 Evidence: Integrity and a simulated recoverability dry run pass. The evidence package is sealed, every check with its source system and timestamp. Total: about five simulated minutes, well under the 15-minute target.
 
 9
-00:01:51,436 --> 00:02:01,000
+00:01:51,562 --> 00:02:01,126
 An honest answer: Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere.
 
 10
-00:02:03,164 --> 00:02:14,757
+00:02:02,723 --> 00:02:14,316
 Auditable either way: The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes.
 
 11
-00:02:16,518 --> 00:02:28,856
+00:02:16,062 --> 00:02:28,400
 Results (illustrative targets): From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results.
 
 12
-00:02:31,473 --> 00:02:49,585
-Architecture: Conversation on top, ADDI lineage in the middle, the Db2 and z/OS estate underneath, and an evidence package at the end. No REST API and no watsonx.ai: both IBM products are simulated screens.
+00:02:30,076 --> 00:02:42,969
+Architecture, in five steps: One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, and seal the evidence.
 
 13
-00:02:49,597 --> 00:03:03,960
-Next step: A Client Engineering pilot connects this flow to the bank’s real ADDI project and Db2 subsystem in 3 to 4 weeks. Built with IBM Bob. Synthetic data only.
+00:02:43,524 --> 00:02:57,982
+What is deployed today: Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, and there is no REST API or watsonx.ai.
+
+14
+00:02:58,525 --> 00:03:17,437
+Conclusion and next steps: This shows the flow, not the products. The target of under 15 minutes is still to be proven. Next: agree the scope, confirm product capabilities, measure today, then run a three to four week pilot on the bank’s real systems.

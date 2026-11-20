@@ -34,8 +34,9 @@ const S = {
   honest: ['An honest answer', 'Not every question has a happy ending. For this object the job ran, but its dataset is missing everywhere.', 5000],
   auditable: ['Auditable either way', 'The tool does not invent a backup. It documents the gap with full evidence, so the audit conversation starts from facts, in minutes.', 7000],
   results: ['Results (illustrative targets)', 'From days of developer effort to a repeatable, auditable trace by the audit or DBA team. Targets to be proven in a pilot, not measured results.', 8000],
-  architecture: ['Architecture', 'Conversation on top, ADDI lineage in the middle, the Db2 and z/OS estate underneath, and an evidence package at the end. No REST API and no watsonx.ai: both IBM products are simulated screens.', 9000],
-  next: ['Next step', 'A Client Engineering pilot connects this flow to the bank’s real ADDI project and Db2 subsystem in 3 to 4 weeks. Built with IBM Bob. Synthetic data only.', 6000],
+  architecture: ['Architecture, in five steps', 'One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, and seal the evidence.', 7000],
+  deployed: ['What is deployed today', 'Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, and there is no REST API or watsonx.ai.', 8000],
+  next: ['Conclusion and next steps', 'This shows the flow, not the products. The target of under 15 minutes is still to be proven. Next: agree the scope, confirm product capabilities, measure today, then run a three to four week pilot on the bank’s real systems.', 9000],
 };
 
 // How the text is pronounced by the voice (captions keep the written form).
@@ -140,8 +141,8 @@ async function say(key) {
     if (!el) {
       el = document.createElement('div');
       el.id = 'video-caption';
-      el.setAttribute('role', 'status'); document.body.style.paddingBottom = '150px';
-      el.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;padding:18px 48px 22px;background:rgba(22,22,22,.94);'
+      el.setAttribute('role', 'status'); document.body.style.paddingBottom = '260px';
+      el.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;padding:18px 48px 22px;background:#161616;'
         + 'color:#f4f4f4;font-family:"IBM Plex Sans",sans-serif;border-top:4px solid #0f62fe;';
       document.body.appendChild(el);
     }
@@ -251,10 +252,28 @@ await say('results');
 
 // ---------------------------------------------------------------- Architecture
 where = 'architecture';
-await goto('#/architecture', '.mermaid-wrap svg');
+await goto('#/architecture', '.arch-flow');
 await styled('architecture');
+check('architecture: 5 flow steps', (await page.locator('.arch-step').count()) === 5);
 await shot('06-architecture');
 await say('architecture');
+await page.getByRole('heading', { name: 'What is deployed today' }).scrollIntoViewIfNeeded();
+await wait(400);
+check('architecture: deployed table lists simulated + not connected', await page.locator('main.page').innerText().then((t) => /Simulated/.test(t) && /Not connected/.test(t)));
+await shot('07-architecture-deployed');
+await say('deployed');
+await page.evaluate(() => {
+  const h = [...document.querySelectorAll('h2')].find((e) => /Conclusion and next steps/.test(e.textContent));
+  window.scrollTo(0, h.getBoundingClientRect().top + window.scrollY - 120);
+});
+await wait(400);
+check('architecture: conclusion fully above caption', await page.evaluate(() => {
+  const c = document.querySelector('.conclusion').getBoundingClientRect();
+  const cap = document.getElementById('video-caption').getBoundingClientRect();
+  return c.bottom <= cap.top;
+}));
+check('architecture: conclusion present', await page.locator('.conclusion').innerText().then((t) => /What happens next/.test(t) && /What we need from the bank/.test(t)));
+await shot('08-architecture-conclusion');
 await say('next');
 
 check('no console errors / exceptions / failed requests', problems.length === 0, problems.slice(0, 5).join(' | '));

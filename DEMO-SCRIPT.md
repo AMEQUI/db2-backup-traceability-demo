@@ -1,8 +1,8 @@
-# Demo Script: video with on-screen notes (silent and narrated versions)
+﻿# Demo Script: video with on-screen notes (silent and narrated versions)
 
 **Formats:**
-- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 3 min 17 s, 1920x1080, with a synthetic offline voice reading the same notes. Subtitles: `video/captions-narrated.srt`. Each scene holds until its sentence finishes, so its cue times differ from the table below.
-- **Silent:** `video/db2-backup-traceability-demo.webm`, about 1 min 50 s, no audio. Notes are burned in as captions (`video/captions.srt`). The timings in the table below are for this version.
+- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 3 min 18 s, 1920x1080, with a synthetic offline voice reading the same notes. Subtitles: `video/captions-narrated.srt`. Each scene holds until its sentence finishes, so its cue times differ from the table below.
+- **Silent:** `video/db2-backup-traceability-demo.webm`, about 1 min 54 s, no audio. Notes are burned in as captions (`video/captions.srt`). The timings in the table below are for this version.
 
 Use this script as the voice-over notes if you present it live instead of playing a video.
 
@@ -34,8 +34,9 @@ npm run preview        # open http://localhost:4173 at 1920x1080
 | 6. Evidence | 0:52 to 1:00 | Scroll to evidence | "Integrity and a simulated recoverability dry run pass. The evidence package is sealed with every check, source system and timestamp. About five simulated minutes, well under the 15-minute target." | Green "Validated" tag, evidence ID, 7 checks |
 | 7. Honest gap | 1:01 to 1:19 | Select Payment history, Run trace | "Not every question ends well. Here the job ran but its dataset is missing everywhere. The tool does not invent a backup; it documents the gap." | Red "Gap documented", skipped checks, "Honest outcome" notice |
 | 8. Results | 1:20 to 1:28 | Go to Results | "From days of developer effort to a repeatable, auditable trace by the audit or DBA team. These are illustrative targets, not measured results." | Before and after cards, chart |
-| 9. Architecture | 1:31 to 1:40 | Go to Architecture | "Conversation on top, ADDI lineage in the middle, Db2 and z/OS underneath, evidence at the end. No REST API and no watsonx.ai; both IBM products are simulated." | Mermaid diagram, component inventory with "Simulated" status |
-| 10. Close | 1:40 to 1:46 | Stay on Architecture | "Next step: a Client Engineering pilot connects this to your real ADDI project and Db2 subsystem in 3 to 4 weeks." | Closing caption |
+| 9. Architecture | after Results | Go to Architecture | "One request, five steps: ask, check the catalog, find the lineage in ADDI, locate and validate the copy, seal the evidence." | Five plain flow cards, each tagged Simulated, Synthetic data or Built |
+| 10. What is deployed | next | Scroll to "What is deployed today" | "Only the demo web app and the evidence export are built. Assistant for Z and ADDI are simulated, no bank system is connected, no REST API or watsonx.ai." | Status table: Built, Simulated, Not connected, Out of scope |
+| 11. Conclusion | last | Scroll to the conclusion | "This shows the flow, not the products. The 15-minute target is still to be proven. Next: agree the scope, confirm product capabilities, measure today, run a 3 to 4 week pilot on the bank's real systems." | Conclusion, four next steps, what we need from the bank |
 
 ## Talk track
 

@@ -1,6 +1,6 @@
-# Db2 Backup Traceability: find and prove a three-year-old backup in minutes, not days
+﻿# Db2 Backup Traceability: find and prove a three-year-old backup in minutes, not days
 
-Illustrative demo built with IBM Bob — uses synthetic data. Product screens are simulated; no IBM service is called.
+Illustrative demo built with IBM Bob â€” uses synthetic data. Product screens are simulated; no IBM service is called.
 
 **Value statement:** an auditor's question about an old Db2 backup is answered with a complete, repeatable evidence trail in under 15 minutes (target), without pulling developers off planned work.
 
@@ -14,8 +14,8 @@ Illustrative demo built with IBM Bob — uses synthetic data. Product screens ar
 
 | File | What it is |
 |---|---|
-| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 3 min 17 s, 1920x1080, H.264 + AAC, with the notes also burned in as captions. The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
-| `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 1 min 50 s, 1920x1080, no audio track. Notes appear as on-screen captions. |
+| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 3 min 18 s, 1920x1080, H.264 + AAC, with the notes also burned in as captions. The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
+| `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 1 min 54 s, 1920x1080, no audio track. Notes appear as on-screen captions. |
 | `video/captions.srt`, `video/captions-narrated.srt` | The same notes as subtitles for each version (for editing or a sidecar track). |
 | `DEMO-SCRIPT.md` | Presenter notes and talk track for the video, timed. |
 | Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). Both videos are under `./video/` on the same site. |
@@ -46,7 +46,7 @@ Regenerate the synthetic data (fixed seed 42, identical every run):
 npm run data
 ```
 
-Re-record the silent video (needs `npm run build` first; also runs 26 checks and fails on any console error or unstyled Carbon):
+Re-record the silent video (needs `npm run build` first; also runs 30 checks and fails on any console error or unstyled Carbon):
 
 ```bash
 npm run build
@@ -83,7 +83,7 @@ git remote add origin https://github.com/AMEQUI/db2-backup-traceability-demo.git
 git push -u origin main
 ```
 
-Then in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and publishes on every push to `main`. The app uses relative asset paths and hash routing, so it works under the `/db2-backup-traceability-demo/` sub-path without server rewrites.
+Then in the repository: **Settings â†’ Pages â†’ Build and deployment â†’ Source: GitHub Actions**. The workflow in `.github/workflows/pages.yml` builds and publishes on every push to `main`. The app uses relative asset paths and hash routing, so it works under the `/db2-backup-traceability-demo/` sub-path without server rewrites.
 
 ## What to show
 

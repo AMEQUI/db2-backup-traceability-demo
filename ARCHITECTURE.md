@@ -6,6 +6,18 @@ Illustrative demo built with IBM Bob — uses synthetic data.
 
 A static, mock-only React app that shows the target flow for answering an audit question about an old Db2 backup: **IBM watsonx Assistant for Z** takes the question, **IBM Application Discovery and Delivery Intelligence (ADDI) for IBM Z** supplies job and program lineage when the Db2 catalog has no history, the backup is located and validated, and an evidence package records every check. Both IBM products are **simulated screens**. There is no REST API, no backend and no watsonx.ai.
 
+In plain terms, one request is five steps (this is also what the app's Architecture page shows):
+
+1. **Ask:** the audit analyst asks in plain language (watsonx Assistant for Z, simulated).
+2. **Check the catalog:** Db2 SYSCOPY has no row, because history is limited (synthetic data).
+3. **Find the lineage:** ADDI shows which batch job and program wrote the backup (simulated).
+4. **Locate and validate:** the dataset is found in z/OS catalog, HSM or tape, and checked (synthetic data).
+5. **Seal the evidence:** every check is recorded with its source system and time (built).
+
+What is deployed today: the web app and the evidence export only. Nothing connects to a bank system.
+
+Component diagram (for engineers):
+
 ```mermaid
 graph TB
   subgraph People["Users"]
@@ -65,7 +77,7 @@ graph TB
 
 ## Security architecture
 
-Static site, no credentials, no network calls at runtime, no cookies, no user input sent anywhere. Mermaid runs with `securityLevel: 'strict'`. No `eval` or `dangerouslySetInnerHTML`.
+Static site, no credentials, no network calls at runtime, no cookies, no user input sent anywhere. No `eval` or `dangerouslySetInnerHTML`.
 
 ## Deployment architecture
 
