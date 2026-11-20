@@ -1,4 +1,6 @@
 import { Tag, StructuredListWrapper, StructuredListHead, StructuredListBody, StructuredListRow, StructuredListCell } from '@carbon/react';
+import MermaidDiagram from '../components/MermaidDiagram.jsx';
+import architectureSource from '../../ARQUITECTURE_3.md?raw';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -22,13 +24,11 @@ export default function ArchitecturePage() {
         How one request flows. The two IBM Z products are shown as simulated screens, and no bank system is connected.
       </p>
 
-      <figure className="diagram">
-        <img
+      <figure className="diagram diagram--mermaid">
+        <MermaidDiagram
           id="arch-diagram"
-          src={`${BASE}diagrams/architecture.svg`}
-          width="1536"
-          height="1024"
-          alt="IBM watsonx Assistant for Z, simulated. An audit analyst asks in plain language. The assistant runs four steps: catalog lookup, lineage when the catalog is empty, locate and validate, and seal evidence. IBM ADDI for IBM Z supplies simulated lineage. A fictional IBM Z estate holds the Db2 catalog, batch jobs and z/OS storage. A DBA reviews the evidence package."
+          source={architectureSource}
+          label="IBM watsonx Assistant for Z, simulated. An audit analyst asks in plain language. The assistant runs four steps: catalog lookup, lineage when the catalog is empty, locate and validate, and seal evidence. IBM ADDI for IBM Z supplies simulated lineage. A fictional IBM Z estate holds the Db2 catalog, batch jobs and z/OS storage. A DBA reviews the evidence package."
         />
       </figure>
 

@@ -1,10 +1,10 @@
 # Demo Script: run of show
 
 **Formats:**
-- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 4 min 1 s, 1920x1080, voice only. Subtitles: `video/captions-narrated.srt`.
+- **Narrated:** `video/db2-backup-traceability-demo-narrated.mp4`, about 3 min 44 s, 1920x1080, voice only. Subtitles: `video/captions-narrated.srt`.
 - **Silent:** `video/db2-backup-traceability-demo.webm`, about 2 min, no audio, with on-screen captions (`video/captions.srt`).
 
-The last three scenes (architecture, what is deployed, conclusion) read from `ARQUITECTURE_2.md`.
+The last three scenes (architecture, what is deployed, conclusion) read from `ARQUITECTURE_2.md`; the architecture diagram shown comes from `ARQUITECTURE_3.md`.
 
 **Audience:** bank audit and compliance leads, DBAs, mainframe application owners.
 

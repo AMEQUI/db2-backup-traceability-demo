@@ -94,8 +94,22 @@ if (NARRATE) {
   mkdirSync('video/.tmp/audio', { recursive: true });
   const manifest = Object.entries(S).map(([k, [, text]]) => ({ file: resolve(`video/.tmp/audio/${k}.wav`), text: spoken(text) }));
   writeFileSync('video/.tmp/audio/manifest.json', JSON.stringify(manifest), 'utf8');
-  const r = spawnSync('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'scripts/synth-voice.ps1', '-Manifest', resolve('video/.tmp/audio/manifest.json')], { encoding: 'utf8' });
-  if (r.status !== 0) { console.error('Voice synthesis failed:', r.stderr || r.stdout); process.exit(2); }
+  const manifestPath = resolve('video/.tmp/audio/manifest.json');
+  // Default: neural voice (edge-tts, needs internet). TTS_ENGINE=windows (or any edge-tts failure) falls back to the offline SAPI voice.
+  let r = { status: 1 };
+  if ((process.env.TTS_ENGINE || 'edge') !== 'windows') {
+    r = spawnSync('python', ['scripts/synth-voice.py', manifestPath], { encoding: 'utf8' });
+    if (r.status === 0) {
+      for (const m of manifest) {
+        const c = spawnSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', '-i', m.file.replace(/\.wav$/, '.mp3'), '-ar', '44100', '-ac', '1', m.file], { encoding: 'utf8' });
+        if (c.status !== 0) { console.error('mp3 -> wav conversion failed:', c.stderr); process.exit(2); }
+      }
+    } else console.warn('Neural voice unavailable (pip install edge-tts, internet needed); falling back to the Windows voice.\n', r.stderr);
+  }
+  if (r.status !== 0) {
+    r = spawnSync('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'scripts/synth-voice.ps1', '-Manifest', manifestPath], { encoding: 'utf8' });
+    if (r.status !== 0) { console.error('Voice synthesis failed:', r.stderr || r.stdout); process.exit(2); }
+  }
   console.log(r.stdout.trim());
   for (const m of manifest) {
     const key = m.file.replace(/^.*[\\/]/, '').replace('.wav', '');
@@ -261,11 +275,15 @@ await say('results');
 // ---------------------------------------------------------------- Architecture
 where = 'architecture';
 await goto('#/architecture', '#arch-diagram');
-await page.waitForFunction(() => document.getElementById('arch-diagram').complete && document.getElementById('arch-diagram').naturalWidth > 0);
+// The functionality diagram is the Mermaid flowchart from ARQUITECTURE_3.md, rendered inline as an SVG.
+await page.waitForSelector('#arch-diagram svg', { timeout: 30000 });
 await styled('architecture');
-// Both SVGs must actually load (a broken image still passes a selector check).
+// The conclusion SVG must actually load (a broken image still passes a selector check).
 const imgOk = (id) => page.evaluate((i) => { const e = document.getElementById(i); return !!e && e.complete && e.naturalWidth > 0; }, id);
-check('architecture: functionality diagram (SVG) loaded', await imgOk('arch-diagram'));
+check('architecture: Mermaid diagram (ARQUITECTURE_3.md) rendered', await page.evaluate(() => {
+  const s = document.querySelector('#arch-diagram svg'); const r = s && s.getBoundingClientRect();
+  return !!r && r.width > 300 && r.height > 200 && document.querySelectorAll('#arch-diagram .node').length >= 8;
+}));
 // The diagrams are tall: centre each one, then assert it is fully visible, below the header and above the caption bar (if shown).
 const fullyVisible = (id) => page.evaluate((i) => {
   const r = document.getElementById(i).getBoundingClientRect(); const cap = document.getElementById('video-caption');

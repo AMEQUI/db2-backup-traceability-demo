@@ -14,10 +14,11 @@ Illustrative demo built with IBM Bob — uses synthetic data. Product screens ar
 
 | File | What it is |
 |---|---|
-| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 4 min 1 s, 1920x1080, H.264 + AAC, voice only (no on-screen caption bar; the notes are in `captions-narrated.srt`). The voice is the offline Windows text-to-speech voice (Microsoft Zira): clear but synthetic, not studio quality. |
+| `video/db2-backup-traceability-demo-narrated.mp4` | **Narrated** walkthrough, about 3 min 44 s, 1920x1080, H.264 + AAC, voice only (no on-screen caption bar; the notes are in `captions-narrated.srt`). The voice is a neural text-to-speech voice (Microsoft Ava, via `edge-tts`), far more natural than the old built-in Windows voice. |
 | `video/db2-backup-traceability-demo.webm` | **Silent** walkthrough, about 2 min, 1920x1080, no audio track. Notes appear as on-screen captions. |
 | `video/captions.srt`, `video/captions-narrated.srt` | The same notes as subtitles for each version (for editing or a sidecar track). |
 | `ARQUITECTURE_2.md` | Source text for the architecture, deployed-today and conclusion scenes of **both** videos. Edit it and re-record to change them. |
+| `ARQUITECTURE_3.md` | Source of the architecture diagram (Mermaid flowchart), rendered on the Architecture page and shown in both videos. Edit it and rebuild to change the diagram. |
 | `public/diagrams/architecture.svg`, `conclusion.svg` | The two IBM-format diagrams shown on the Architecture page and in both videos (editable SVG, no photo, no logo). |
 | `DEMO-SCRIPT.md` | Run of show for the video (what appears on screen, in order). No presenter notes. |
 | Live app | `https://amequi.github.io/db2-backup-traceability-demo/` once deployed (see below). Both videos are under `./video/` on the same site. |
@@ -56,14 +57,15 @@ npx playwright-core install ffmpeg   # one time, downloads Playwright's recorder
 npm run video
 ```
 
-Re-record the narrated MP4 (Windows only: it uses the built-in `System.Speech` voices; also needs a full ffmpeg with libx264 and AAC, for example `winget install Gyan.FFmpeg`, or set `FFMPEG=<path to ffmpeg.exe>`; takes about 5 minutes because it records in real time):
+Re-record the narrated MP4 (needs Python with `pip install edge-tts` and internet access for the neural voice, plus a full ffmpeg with libx264 and AAC, for example `winget install Gyan.FFmpeg`, or set `FFMPEG=<path to ffmpeg.exe>`; takes about 5 minutes because it records in real time):
 
 ```bash
 npm run build
+pip install edge-tts
 npm run video:voice
 ```
 
-Optional: `VOICE_NAME=David` picks another installed Windows voice. On macOS or Linux, record a voice-over yourself from `video/captions.srt` and mux it onto the silent video.
+Optional: `TTS_VOICE=en-US-AndrewNeural` picks another voice (list them with `python -m edge_tts --list-voices`) and `TTS_RATE=-8%` slows it down. `TTS_ENGINE=windows` (or no internet or no edge-tts) falls back to the offline Windows voice (`scripts/synth-voice.ps1`, Windows only; `VOICE_NAME=David` picks another installed voice).
 
 If Chrome or Edge is not found, set `CHROME_PATH` (see `.env.example`).
 

@@ -16,6 +16,7 @@
     "@carbon/charts-react": "1.27.27",
     "@carbon/icons-react": "11.92.0",
     "@carbon/react": "1.121.0",
+    "mermaid": "11.4.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.30.1"

@@ -138,6 +138,8 @@
 .diagram {
   margin: 0 0 $spacing-06;
   img { display: block; inline-size: 100%; max-inline-size: 1100px; block-size: auto; border: 1px solid theme.$border-subtle-01; }
+  &--mermaid { background: #ffffff; padding: $spacing-05; max-inline-size: 1100px; border: 1px solid theme.$border-subtle-01; }
+  .mermaid-diagram svg { display: block; inline-size: 100%; max-inline-size: 100%; block-size: auto; }
 }
 
 .app-footer { margin-top: $spacing-08; padding: $spacing-05 $spacing-06; color: theme.$text-secondary; @include type.type-style('helper-text-01'); }
